@@ -1,0 +1,14 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# CSV files
+*.csv
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
