@@ -1,4 +1,5 @@
 const contentfulManagement = require("contentful-management")
+const { getRandomISODateString } = require("./utils")
 require("dotenv").config()
 
 const client = contentfulManagement.createClient({
@@ -31,6 +32,9 @@ async function updateRecipes() {
       entry.fields.details = template.fields.details
       entry.fields.summary = {
         "en-US": `This is a summary for ${entry.fields.title["en-US"]}`,
+      }
+      entry.fields.date = {
+        "en-US": getRandomISODateString(),
       }
 
       await entry.update()
