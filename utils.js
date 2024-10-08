@@ -9,9 +9,13 @@ function getRandomDate(start, end) {
   return randomDate.toISOString()
 }
 
-export function getRandomISODateString() {
+function getRandomISODateString() {
   const start = "2024-01-01T00:00:00.000Z"
   const end = "2024-10-01T00:00:00.000Z"
 
   return getRandomDate(start, end)
+}
+
+module.exports = {
+  getRandomISODateString,
 }
