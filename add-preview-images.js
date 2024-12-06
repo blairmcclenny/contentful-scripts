@@ -70,9 +70,19 @@ async function updateEntry(entry, image) {
 async function addPreviewImageToEntries() {
   try {
     const images = await getImages()
-    const entries = await getEntries('recipe')
+    const entries = await getEntries("recipe")
 
-    const squareImages = images?.filter(image => image.fields.title['en-US'].includes('1080x1080'))
+    // green blue orange light-grey square images only
+    const squareImages = images?.filter((image) => {
+      const title = image.fields.title["en-US"]
+
+      return (
+        title.includes("1080x1080") &&
+        ["blue", "green", "orange", "light-grey"].some((color) =>
+          title.includes(color)
+        )
+      )
+    })
 
     if (!images || !squareImages) return "No images to add"
     if (!entries) return "No entries to update"
